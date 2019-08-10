@@ -23,10 +23,11 @@ mysql-openemail:
            - ::1
            - ${IPV4_NETWORK:-172.22.1}.0/24
            - ${IPV6_NETWORK:-fd4d:6169:6c63:6f77::/64}
-        - MYSQL_ROOT_PASSWORD=${DBROOT}
-        - MYSQL_DATABASE=${DBNAME}
-        - MYSQL_USER=${DBUSER}
-        - MYSQL_PASSWORD=${DBPASS}
+        - MARIADB_DATABASES:
+           - openemail:${DBPASS}
+           - nextcloud:${DBPASS}
+           - rainloop:${DBPASS}
+           - roundcube:${DBPASS}
       restart: always
       dns:
         - ${IPV4_NETWORK:-172.22.1}.254
