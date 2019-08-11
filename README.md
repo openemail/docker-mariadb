@@ -41,5 +41,5 @@ mysql-openemail:
     openemail-network:
       aliases:
         - mysql
-
+```
 The above `${DBUSER}:${DBPASS}` represents **OpenEMAIL** database user and user's password as per `openemail.conf`
