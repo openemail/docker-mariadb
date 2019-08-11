@@ -15,15 +15,15 @@ mysql-openemail:
     - ./data/conf/mysql/:/etc/mysql/conf.d/:ro
   environment:
     - TZ=${TZ}
-    - MARIADB_ROOT_USER=${DBROOT_USER}
-    - MARIADB_ROOT_PASSWORD=${DBROOT_PASSWORD}
+    - MARIADB_ROOT_USER=root
+    - MARIADB_ROOT_PASSWORD=${DBROOT}
     - MARIADB_ROOT_ALLOWED_NETWORKS: 
-    - localhost
-    - 127.0.0.1
-    - ::1
-    - ${IPV4_NETWORK:-172.22.1}.0/24
-    - ${IPV6_NETWORK:-fd4d:6169:6c63:6f77::/64}
-    - MARIADB_DATABASES:
+      - localhost
+      - 127.0.0.1
+      - ::1
+      - ${IPV4_NETWORK:-172.22.1}.0/24
+      - ${IPV6_NETWORK:-fd4d:6169:6c63:6f77::/64}
+      - MARIADB_DATABASES:
     - ${DBNAME}:
         - ${DBUSER}:${DBPASS}
     - nextcloud:
