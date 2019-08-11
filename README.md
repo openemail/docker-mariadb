@@ -24,10 +24,14 @@ mysql-openemail:
     - ${IPV4_NETWORK:-172.22.1}.0/24
     - ${IPV6_NETWORK:-fd4d:6169:6c63:6f77::/64}
     - MARIADB_DATABASES:
-    - ${DBNAME}:${DBPASS}
-    - nextcloud:${DBPASS}
-    - rainloop:${DBPASS}
-    - roundcube:${DBPASS}
+    - ${DBNAME}:
+        - ${DBUSER}:${DBPASS}
+    - nextcloud:
+        - ${DBUSER}:${DBPASS}     
+    - rainloop:
+        - ${DBUSER}:${DBPASS}
+    - roundcube:
+        - ${DBUSER}:${DBPASS}
   restart: always
   dns:
     - ${IPV4_NETWORK:-172.22.1}.254
@@ -37,3 +41,5 @@ mysql-openemail:
     openemail-network:
       aliases:
         - mysql
+
+The above `${DBUSER}:${DBPASS}` represents **OpenEMAIL** database user and user's password as per `openemail.conf`
